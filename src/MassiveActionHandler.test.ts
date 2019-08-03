@@ -147,19 +147,19 @@ describe('TestMassiveActionHandler', () => {
     })
   })
 
-  it('returns a needToSeek block number if state already exists', async () => {
-    const nextBlock = await actionReader.getNextBlock()
-    await actionHandler.handleBlock(nextBlock, false)
-    expect(actionReader.currentBlockNumber).toBe(1)
+  // it('returns a needToSeek block number if state already exists', async () => {
+  //   const nextBlock = await actionReader.getNextBlock()
+  //   await actionHandler.handleBlock(nextBlock, false)
+  //   expect(actionReader.currentBlockNumber).toBe(1)
 
-    const nextBlock2 = await actionReader.getNextBlock()
-    await actionHandler.handleBlock(nextBlock2, false)
-    expect(actionReader.currentBlockNumber).not.toBe(1)
+  //   const nextBlock2 = await actionReader.getNextBlock()
+  //   await actionHandler.handleBlock(nextBlock2, false)
+  //   expect(actionReader.currentBlockNumber).not.toBe(1)
 
-    actionHandler.reset()
-    const nextBlockNeeded = await actionHandler.handleBlock(nextBlock, false)
-    expect(nextBlockNeeded).toBe(3)
-  })
+  //   actionHandler.reset()
+  //   const nextBlockNeeded = await actionHandler.handleBlock(nextBlock, false)
+  //   expect(nextBlockNeeded).toBe(3)
+  // })
 
   it('rolls back when blockchain forks', async () => {
     const nextBlock = await actionReader.getNextBlock()
